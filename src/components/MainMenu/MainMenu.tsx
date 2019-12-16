@@ -48,7 +48,18 @@ const MainMenu: React.FC = () => {
       {overlayContext => (
         <nav className="main-menu" id="header">
           <div className="main-menu__left">
-            <TypedMainMenuQuery renderOnError displayLoader={false}>
+          <Link to={baseUrl}>
+              <ReactSVG path={logoImg} />
+            </Link>
+            
+          </div>
+
+          <div className="main-menu__center">
+            
+          </div>
+
+          <div className="main-menu__right">
+          <TypedMainMenuQuery renderOnError displayLoader={false}>
               {({ data }) => {
                 const items = maybe(() => data.shop.navigation.main.items, []);
 
@@ -92,15 +103,6 @@ const MainMenu: React.FC = () => {
                 );
               }}
             </TypedMainMenuQuery>
-          </div>
-
-          <div className="main-menu__center">
-            <Link to={baseUrl}>
-              <ReactSVG path={logoImg} />
-            </Link>
-          </div>
-
-          <div className="main-menu__right">
             <ul>
               <Online>
                 <Media

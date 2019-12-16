@@ -1,7 +1,7 @@
 @import "../../../globalStyles/scss/variables.scss";
 
 .product-page {
-  background-color: $turquoise-light;
+  background-color: $cuerex-light;
 
   .breadcrumbs {
     background-color: $white;
@@ -99,8 +99,8 @@
 
           &.active {
             span {
-              background-color: $turquoise;
-              border-color: $turquoise;
+              background-color: $cuerex;
+              border-color: $cuerex;
             }
           }
         }

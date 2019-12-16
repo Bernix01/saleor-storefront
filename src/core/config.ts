@@ -25,16 +25,6 @@ export const SOCIAL_MEDIA = [
     href: "https://www.instagram.com/mirumeelabs/",
     path: require("../images/instagram-icon.svg"),
   },
-  {
-    ariaLabel: "twitter",
-    href: "https://twitter.com/getsaleor",
-    path: require("../images/twitter-icon.svg"),
-  },
-  {
-    ariaLabel: "youtube",
-    href: "https://www.youtube.com/channel/UCg_ptb-U75e7BprLCGS4s1g/videos",
-    path: require("../images/youtube-icon.svg"),
-  },
 ];
 export const META_DEFAULTS = {
   custom: [],

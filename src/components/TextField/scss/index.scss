@@ -45,12 +45,12 @@
       &:focus,
       &:not([value=""]) {
         & + .input__label {
-          background-color: $turquoise-light;
+          background-color: $cuerex-light;
         }
       }
       &:-webkit-autofill {
         & + .input__label {
-          background-color: $turquoise-light;
+          background-color: $cuerex-light;
         }
       }
     }

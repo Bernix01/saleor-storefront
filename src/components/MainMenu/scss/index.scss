@@ -3,8 +3,8 @@
 .main-menu {
   align-items: center;
   align-items: stretch;
-  background-color: $white;
-  border-bottom: 1px solid $gray-light;
+  background-color: $cuerex;
+  // border-bottom: 1px solid $gray-light;
   display: flex;
   flex-direction: row;
   height: 3.55rem;
@@ -17,11 +17,15 @@
       flex-basis: calc(50% - 4rem);
     }
 
-    ul {
-      display: flex;
-      align-items: center;
-      height: 100%;
+
+    svg {
+      width: 4rem;
+
+      @media (min-width: $small-screen) {
+        width: 6rem;
+      }
     }
+
   }
 
   &__right {
@@ -41,13 +45,6 @@
   &__center {
     align-self: center;
 
-    svg {
-      width: 4rem;
-
-      @media (min-width: $small-screen) {
-        width: 6rem;
-      }
-    }
   }
 
   &__item {
@@ -57,18 +54,18 @@
 
     a {
       text-decoration: none;
-      color: $base-font-color;
+      color: $white;
       position: relative;
       transition: 0.3s;
 
       &:hover {
-        color: $turquoise;
+        color: $cuerex-light;
       }
     }
   }
 
   &__hamburger {
-    border-right: 1px solid $gray-light;
+    // border-right: 1px solid $gray-light;
     cursor: pointer;
     padding: $spacer;
 
@@ -109,7 +106,7 @@
 
     &:hover {
       svg * {
-        fill: $turquoise;
+        fill: $cuerex-light;
       }
     }
 
@@ -140,7 +137,7 @@
 
   &__user {
     &--active * {
-      fill: $turquoise;
+      fill: $cuerex;
       fill-rule: inherit;
     }
   }
@@ -166,6 +163,7 @@
   &__offline {
     line-height: 24px;
     padding: $spacer;
+    color: $white;
 
     span {
       text-transform: uppercase;
@@ -179,6 +177,7 @@
     cursor: pointer;
     line-height: 24px;
     transition: 0.3s;
+    color: $white;
 
     @media (min-width: $medium-screen) {
       border-left: 1px solid $gray-light;
@@ -189,9 +188,9 @@
     }
 
     &:hover {
-      color: $turquoise;
+      color: $cuerex-light;
       svg * {
-        fill: $turquoise;
+        fill: $cuerex-light;
       }
     }
 
@@ -214,7 +213,7 @@
     padding: 0 1.5rem;
 
     &--active {
-      background-color: $turquoise-light;
+      background-color: $cuerex-light;
     }
 
     & > li:first-child {
@@ -261,7 +260,7 @@
           position: relative;
 
           &:before {
-            background-color: $turquoise-light;
+            background-color: $cuerex-light;
             content: "";
             height: 1px;
             left: 0;

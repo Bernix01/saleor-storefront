@@ -14,7 +14,7 @@ const canDisplay = (data: ProductsList) =>
 const View: React.FC = () => (
   <div className="home-page">
     <TypedHomePageQuery alwaysRender displayLoader={false} errorPolicy="all">
-      {({ data, loading }) => {
+      {({ data, loading }) => {        
         if (canDisplay(data)) {
           return (
             <MetaWrapper
