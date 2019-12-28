@@ -38,6 +38,8 @@ const ProductsFeatured: React.FC<ProductsFeaturedProps> = ({ title }) => {
               </div>
             </div>
           );
+        } else{
+          return <h1> EMPTY FEATURED </h1>
         }
       }}
     </TypedFeaturedProductsQuery>
