@@ -61,6 +61,17 @@ export const productPricingFragment = gql`
   }
 `;
 
+export const selectedAttributeFragment = gql`
+  fragment SelectedAttributeFields on SelectedAttribute {
+    attribute {
+      name
+    }
+    values {
+      name
+    }
+  }
+`;
+
 export const productVariantFragment = gql`
   ${priceFragment}
   fragment ProductVariantFields on ProductVariant {
@@ -94,6 +105,7 @@ export const productVariantFragment = gql`
 
 export const productDetailsQuery = gql`
   ${basicProductFragment}
+  ${selectedAttributeFragment}
   ${productVariantFragment}
   ${productPricingFragment}
   query ProductDetails($id: ID!) {
@@ -121,6 +133,9 @@ export const productDetailsQuery = gql`
         id
         url
       }
+      attributes {
+        ...SelectedAttributeFields
+      }
       variants {
         ...ProductVariantFields
       }
@@ -135,7 +150,7 @@ export const productDetailsQuery = gql`
 
 // FIXME: Check how to handle pagination of `productVariants` in the UI.
 // We need allow the user view  all cart items regardless of pagination.
-export const productVariatnsQuery = gql`
+export const productVariantsQuery = gql`
   ${basicProductFragment}
   ${productVariantFragment}
   query VariantList($ids: [ID!]) {
@@ -161,4 +176,4 @@ export const TypedProductDetailsQuery = TypedQuery<
 export const TypedProductVariantsQuery = TypedQuery<
   VariantList,
   VariantListVariables
->(productVariatnsQuery);
+>(productVariantsQuery);
