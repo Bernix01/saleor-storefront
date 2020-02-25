@@ -30,11 +30,6 @@ export interface CheckoutDetails_checkout_availablePaymentGateways {
   config: CheckoutDetails_checkout_availablePaymentGateways_config[];
 }
 
-export interface CheckoutDetails_checkout_user {
-  __typename: "User";
-  email: string;
-}
-
 export interface CheckoutDetails_checkout_totalPrice_gross {
   __typename: "Money";
   /**
@@ -45,10 +40,6 @@ export interface CheckoutDetails_checkout_totalPrice_gross {
    * Currency code.
    */
   currency: string;
-  /**
-   * Money formatted according to the current locale.
-   */
-  localized: string;
 }
 
 export interface CheckoutDetails_checkout_totalPrice_net {
@@ -61,10 +52,6 @@ export interface CheckoutDetails_checkout_totalPrice_net {
    * Currency code.
    */
   currency: string;
-  /**
-   * Money formatted according to the current locale.
-   */
-  localized: string;
 }
 
 export interface CheckoutDetails_checkout_totalPrice {
@@ -89,10 +76,6 @@ export interface CheckoutDetails_checkout_subtotalPrice_gross {
    * Currency code.
    */
   currency: string;
-  /**
-   * Money formatted according to the current locale.
-   */
-  localized: string;
 }
 
 export interface CheckoutDetails_checkout_subtotalPrice_net {
@@ -105,10 +88,6 @@ export interface CheckoutDetails_checkout_subtotalPrice_net {
    * Currency code.
    */
   currency: string;
-  /**
-   * Money formatted according to the current locale.
-   */
-  localized: string;
 }
 
 export interface CheckoutDetails_checkout_subtotalPrice {
@@ -154,6 +133,14 @@ export interface CheckoutDetails_checkout_billingAddress {
   country: CheckoutDetails_checkout_billingAddress_country;
   countryArea: string;
   phone: string | null;
+  /**
+   * Address is user's default billing address.
+   */
+  isDefaultBillingAddress: boolean | null;
+  /**
+   * Address is user's default shipping address.
+   */
+  isDefaultShippingAddress: boolean | null;
 }
 
 export interface CheckoutDetails_checkout_shippingAddress_country {
@@ -187,6 +174,14 @@ export interface CheckoutDetails_checkout_shippingAddress {
   country: CheckoutDetails_checkout_shippingAddress_country;
   countryArea: string;
   phone: string | null;
+  /**
+   * Address is user's default billing address.
+   */
+  isDefaultBillingAddress: boolean | null;
+  /**
+   * Address is user's default shipping address.
+   */
+  isDefaultShippingAddress: boolean | null;
 }
 
 export interface CheckoutDetails_checkout_availableShippingMethods_price {
@@ -199,10 +194,6 @@ export interface CheckoutDetails_checkout_availableShippingMethods_price {
    * Amount of money.
    */
   amount: number;
-  /**
-   * Money formatted according to the current locale.
-   */
-  localized: string;
 }
 
 export interface CheckoutDetails_checkout_availableShippingMethods {
@@ -225,10 +216,6 @@ export interface CheckoutDetails_checkout_shippingMethod_price {
    * Amount of money.
    */
   amount: number;
-  /**
-   * Money formatted according to the current locale.
-   */
-  localized: string;
 }
 
 export interface CheckoutDetails_checkout_shippingMethod {
@@ -251,10 +238,6 @@ export interface CheckoutDetails_checkout_shippingPrice_gross {
    * Currency code.
    */
   currency: string;
-  /**
-   * Money formatted according to the current locale.
-   */
-  localized: string;
 }
 
 export interface CheckoutDetails_checkout_shippingPrice_net {
@@ -267,10 +250,6 @@ export interface CheckoutDetails_checkout_shippingPrice_net {
    * Currency code.
    */
   currency: string;
-  /**
-   * Money formatted according to the current locale.
-   */
-  localized: string;
 }
 
 export interface CheckoutDetails_checkout_shippingPrice {
@@ -295,10 +274,6 @@ export interface CheckoutDetails_checkout_lines_totalPrice_gross {
    * Currency code.
    */
   currency: string;
-  /**
-   * Money formatted according to the current locale.
-   */
-  localized: string;
 }
 
 export interface CheckoutDetails_checkout_lines_totalPrice_net {
@@ -311,10 +286,6 @@ export interface CheckoutDetails_checkout_lines_totalPrice_net {
    * Currency code.
    */
   currency: string;
-  /**
-   * Money formatted according to the current locale.
-   */
-  localized: string;
 }
 
 export interface CheckoutDetails_checkout_lines_totalPrice {
@@ -339,10 +310,6 @@ export interface CheckoutDetails_checkout_lines_variant_pricing_priceUndiscounte
    * Currency code.
    */
   currency: string;
-  /**
-   * Money formatted according to the current locale.
-   */
-  localized: string;
 }
 
 export interface CheckoutDetails_checkout_lines_variant_pricing_priceUndiscounted_net {
@@ -355,10 +322,6 @@ export interface CheckoutDetails_checkout_lines_variant_pricing_priceUndiscounte
    * Currency code.
    */
   currency: string;
-  /**
-   * Money formatted according to the current locale.
-   */
-  localized: string;
 }
 
 export interface CheckoutDetails_checkout_lines_variant_pricing_priceUndiscounted {
@@ -383,10 +346,6 @@ export interface CheckoutDetails_checkout_lines_variant_pricing_price_gross {
    * Currency code.
    */
   currency: string;
-  /**
-   * Money formatted according to the current locale.
-   */
-  localized: string;
 }
 
 export interface CheckoutDetails_checkout_lines_variant_pricing_price_net {
@@ -399,10 +358,6 @@ export interface CheckoutDetails_checkout_lines_variant_pricing_price_net {
    * Currency code.
    */
   currency: string;
-  /**
-   * Money formatted according to the current locale.
-   */
-  localized: string;
 }
 
 export interface CheckoutDetails_checkout_lines_variant_pricing_price {
@@ -502,6 +457,18 @@ export interface CheckoutDetails_checkout_lines {
   variant: CheckoutDetails_checkout_lines_variant;
 }
 
+export interface CheckoutDetails_checkout_discount {
+  __typename: "Money";
+  /**
+   * Currency code.
+   */
+  currency: string;
+  /**
+   * Amount of money.
+   */
+  amount: number;
+}
+
 export interface CheckoutDetails_checkout {
   __typename: "Checkout";
   /**
@@ -513,7 +480,6 @@ export interface CheckoutDetails_checkout {
    * The ID of the object.
    */
   id: string;
-  user: CheckoutDetails_checkout_user | null;
   /**
    * The sum of the the checkout line prices, with all the taxes,shipping costs, and discounts included.
    */
@@ -541,6 +507,14 @@ export interface CheckoutDetails_checkout {
    * A list of checkout lines, each containing information about an item in the checkout.
    */
   lines: (CheckoutDetails_checkout_lines | null)[] | null;
+  /**
+   * Returns True, if checkout requires shipping.
+   */
+  isShippingRequired: boolean;
+  discount: CheckoutDetails_checkout_discount | null;
+  discountName: string | null;
+  translatedDiscountName: string | null;
+  voucherCode: string | null;
 }
 
 export interface CheckoutDetails {

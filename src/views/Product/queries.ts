@@ -3,7 +3,7 @@ import gql from "graphql-tag";
 import { TypedQuery } from "../../core/queries";
 import {
   ProductDetails,
-  ProductDetailsVariables
+  ProductDetailsVariables,
 } from "./types/ProductDetails";
 import { VariantList, VariantListVariables } from "./types/VariantList";
 
@@ -12,12 +12,10 @@ export const priceFragment = gql`
     gross {
       amount
       currency
-      localized
     }
     net {
       amount
       currency
-      localized
     }
   }
 `;
@@ -64,9 +62,11 @@ export const productPricingFragment = gql`
 export const selectedAttributeFragment = gql`
   fragment SelectedAttributeFields on SelectedAttribute {
     attribute {
+      id
       name
     }
     values {
+      id
       name
     }
   }
@@ -80,6 +80,11 @@ export const productVariantFragment = gql`
     name
     stockQuantity
     isAvailable
+    images {
+      id
+      url
+      alt
+    }
     pricing {
       onSale
       priceUndiscounted {
@@ -94,7 +99,7 @@ export const productVariantFragment = gql`
         id
         name
       }
-      value {
+      values {
         id
         name
         value: name
@@ -116,15 +121,11 @@ export const productDetailsQuery = gql`
       category {
         id
         name
-        products(first: 4) {
+        products(first: 3) {
           edges {
             node {
               ...BasicProductFields
               ...ProductPricingField
-              category {
-                id
-                name
-              }
             }
           }
         }
@@ -141,9 +142,7 @@ export const productDetailsQuery = gql`
       }
       seoDescription
       seoTitle
-      availability {
-        available
-      }
+      isAvailable
     }
   }
 `;

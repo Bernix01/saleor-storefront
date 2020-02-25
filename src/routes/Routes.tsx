@@ -7,8 +7,7 @@ import UserAccount, {
   userOrderDetailsUrl,
 } from "../userAccount/routes";
 import { OrderDetails } from "../userAccount/views";
-
-import { Account } from "../views/Account";
+import { Account, AccountConfirm } from "../views/Account";
 import { ArticlePage } from "../views/Article";
 import { CartPage } from "../views/Cart";
 import { CategoryPage } from "../views/Category";
@@ -17,6 +16,8 @@ import OrderConfirmation from "../views/OrderConfirmation/View";
 import { ProductPage } from "../views/Product";
 import { SearchPage } from "../views/Search";
 import { ShopPage } from "../views/Shop";
+
+import { PasswordReset } from "../@next/components/views";
 
 const slugUrl = ":slug([a-z-0-9]+)/:id([0-9]+)/";
 export const baseUrl = "/";
@@ -28,12 +29,14 @@ export const productUrl = `${baseUrl}product/${slugUrl}`;
 export const cartUrl = `${baseUrl}cart/:token?/`;
 export const checkoutLoginUrl = `${baseUrl}login/`;
 export const pageUrl = `${baseUrl}page/:slug/`;
-export const guestOrderDetailsUrl = `/order/:token/`;
+export const guestOrderDetailsUrl = `/order-history/:token/`;
 export const orderConfirmationUrl = `${baseUrl}order-confirmation/`;
 export const accountUrl = `${baseUrl}account/`;
+export const accountConfirmUrl = `${baseUrl}account-confirm/`;
 export const orderHistoryUrl = `${baseUrl}order-history/`;
 export const addressBookUrl = `${baseUrl}address-book/`;
 export const paymentOptionsUrl = `${baseUrl}payment-options/`;
+export const passwordResetUrl = `${baseUrl}reset-password/`;
 
 export const aboutUrl = `${baseUrl}about`;
 export const contactUrl = `${baseUrl}contact`;
@@ -60,9 +63,11 @@ export const Routes: React.FC = () => (
     <Route path={guestOrderDetailsUrl} component={OrderDetails} />
     <Route path={orderConfirmationUrl} component={OrderConfirmation} />
     <Route path={accountUrl} component={Account} />
+    <Route path={accountConfirmUrl} component={AccountConfirm} />
     <Route path={orderHistoryUrl} component={Account} />
     <Route path={addressBookUrl} component={Account} />
     <Route path={paymentOptionsUrl} component={Account} />
+    <Route path={passwordResetUrl} component={PasswordReset} />
     <Route component={NotFound} />
   </Switch>
 );
