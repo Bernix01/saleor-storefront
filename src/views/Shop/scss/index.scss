@@ -54,6 +54,23 @@
         font-weight: 900;
 
         @media (max-width: $small-screen) {
+          font-size: $h3-font-size;
+        }
+
+        @media (min-width: $small-screen) and (max-width: $medium-screen) {
+          font-size: 48px;
+        }
+      }
+      h4 {
+        display: inline-block;
+        transform: skew(-45deg);
+        font-weight: $bold-font-weight;
+        text-transform: uppercase;
+        color: $blue;
+        font-size: $h4-font-size;
+        font-weight: 900;
+
+        @media (max-width: $small-screen) {
           font-size: $h4-font-size;
         }
 

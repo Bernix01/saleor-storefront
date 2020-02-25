@@ -1,0 +1,26 @@
+@import "../../../../globalStyles/scss/variables.scss";
+@import "~bootstrap/scss/bootstrap";
+
+.home-page {
+  .sliderbtn {
+    border: 0px;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    padding: 10px;
+    outline: 0px;
+    opacity: 1;
+    cursor: pointer;
+    background-position: initial initial;
+    background-repeat: initial initial;
+  }
+
+  .img-fluid {
+    max-width: 100%;
+  }
+
+  .cuerex-logo {
+    max-height: 170px;
+  }
+
+
+}

@@ -1,0 +1,50 @@
+.colections {
+    .top {
+        background-repeat: no-repeat;
+        background-position: left center;
+        background-size: cover;
+
+        .ttop {
+            @media only screen and (min-width: 800px) {
+                @include aspect-ratio(16, 9);
+            }
+        }
+    }
+
+    h2 {
+        color: #fff;
+        font-weight: 100;
+
+        strong {
+            font-weight: 800;
+            color: #fbac78;
+        }
+    }
+
+    .colects {
+        .colection {
+            cursor: pointer;
+
+            @include aspect-ratio(1, 1);
+
+            > .content {
+                display: flex;
+                flex-direction: row;
+            }
+
+            .logo {
+                max-width: 200px;
+            }
+        }
+    }
+
+    .close-modal {
+        position: absolute;
+        right: 1rem;
+        color: black;
+        font-size: 1.3rem;
+        font-weight: bold;
+        cursor: pointer;
+        z-index: 999;
+    }
+}

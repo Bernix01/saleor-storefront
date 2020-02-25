@@ -38,12 +38,12 @@ const Page: React.FC<{
       <div className="home-page__hero-text">
         <div>
           <span className="home-page__hero__title">
-            <h1>CUEREX</h1>
+            <h1>New Neceser model</h1>
           </span>
         </div>
         <div>
           <span className="home-page__hero__title">
-            <h1></h1>
+            <h4>By Mucca</h4>
           </span>
         </div>
       </div>
@@ -57,7 +57,7 @@ const Page: React.FC<{
               categories.edges[0].node.name
             )}
           >
-            <Button>Shop sale</Button>
+            <Button>Ver</Button>
           </Link>
         )}
       </div>

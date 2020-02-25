@@ -7,18 +7,20 @@ import UserAccount, {
   userOrderDetailsUrl,
 } from "../userAccount/routes";
 import { OrderDetails } from "../userAccount/views";
+
 import { Account } from "../views/Account";
 import { ArticlePage } from "../views/Article";
 import { CartPage } from "../views/Cart";
 import { CategoryPage } from "../views/Category";
 import { CollectionPage } from "../views/Collection";
-import { HomePage } from "../views/Home";
 import OrderConfirmation from "../views/OrderConfirmation/View";
 import { ProductPage } from "../views/Product";
 import { SearchPage } from "../views/Search";
+import { ShopPage } from "../views/Shop";
 
 const slugUrl = ":slug([a-z-0-9]+)/:id([0-9]+)/";
 export const baseUrl = "/";
+export const shopUrl = `${baseUrl}shop`;
 export const searchUrl = `${baseUrl}search/`;
 export const categoryUrl = `${baseUrl}category/${slugUrl}`;
 export const collectionUrl = `${baseUrl}collection/${slugUrl}`;
@@ -33,9 +35,19 @@ export const orderHistoryUrl = `${baseUrl}order-history/`;
 export const addressBookUrl = `${baseUrl}address-book/`;
 export const paymentOptionsUrl = `${baseUrl}payment-options/`;
 
+export const aboutUrl = `${baseUrl}about`;
+export const contactUrl = `${baseUrl}contact`;
+export const collectionsUrl = `${baseUrl}collections`;
+export const furnitureUrl = `${baseUrl}muebles`;
+
 export const Routes: React.FC = () => (
   <Switch>
-    <Route exact path={baseUrl} component={HomePage} />
+    <Route exact path={baseUrl} component={ShopPage} />
+    {/* <Route exact path={shopUrl} component={ShopPage} />
+    <Route exact path={aboutUrl} component={AboutPage} />
+    <Route exact path={contactUrl} component={ContactPage} />
+    <Route exact path={collectionUrl} component={CollectionsPage} />
+    <Route exact path={furnitureUrl} component={MueblesPage} /> */}
     <Route path={searchUrl} component={SearchPage} />
     <Route path={categoryUrl} component={CategoryPage} />
     <Route path={collectionUrl} component={CollectionPage} />

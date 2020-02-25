@@ -26,7 +26,7 @@ import {
   addressBookUrl,
   baseUrl,
   orderHistoryUrl,
-  paymentOptionsUrl
+  paymentOptionsUrl,
 } from "../../routes";
 import { CartContext } from "../CartProvider/context";
 import NavDropdown from "./NavDropdown";
@@ -38,72 +38,118 @@ import hamburgerImg from "../../images/hamburger.svg";
 import logoImg from "../../images/logo.svg";
 import searchImg from "../../images/search.svg";
 import userImg from "../../images/user.svg";
+import { MainMenu_shop_navigation_main_items } from "./types/MainMenu";
 
 const MainMenu: React.FC = () => {
   const { data: user } = useUserDetails();
   const [signOut] = useSignOut();
+  const staticPages: MainMenu_shop_navigation_main_items[] = [
+    // {
+    //   __typename: "MenuItem",
+    //   category: null,
+    //   children: [],
+    //   collection: null,
+    //   id: "1",
+    //   name: "MUEBLES",
+    //   page: null,
+    //   parent: null,
+    //   url: "/muebles",
+    // },
+    // {
+    //   __typename: "MenuItem",
+    //   category: null,
+    //   children: [],
+    //   collection: null,
+    //   id: "2",
+    //   name: "COLECCIONES",
+    //   page: null,
+    //   parent: null,
+    //   url: collectionUrl,
+    // },
+    // {
+    //   __typename: "MenuItem",
+    //   category: null,
+    //   children: [],
+    //   collection: null,
+    //   id: "3",
+    //   name: "TIENDA",
+    //   page: null,
+    //   parent: null,
+    //   url: shopUrl,
+    // },
 
+  ];
   return (
     <OverlayContext.Consumer>
       {overlayContext => (
         <nav className="main-menu" id="header">
           <div className="main-menu__left">
-          <Link to={baseUrl}>
+            <Link to={baseUrl}>
               <ReactSVG path={logoImg} />
             </Link>
-            
+
           </div>
 
           <div className="main-menu__center">
-            
+
           </div>
 
           <div className="main-menu__right">
-          <TypedMainMenuQuery renderOnError displayLoader={false}>
-              {({ data }) => {
-                const items = maybe(() => data.shop.navigation.main.items, []);
-
-                return (
-                  <ul>
-                    <Media
-                      query={{ maxWidth: mediumScreen }}
-                      render={() => (
-                        <li
-                          className="main-menu__hamburger"
-                          onClick={() =>
-                            overlayContext.show(
-                              OverlayType.sideNav,
-                              OverlayTheme.left,
-                              { data: items }
-                            )
-                          }
-                        >
-                          <ReactSVG
-                            path={hamburgerImg}
-                            className={"main-menu__hamburger--icon"}
-                          />
-                          <ReactSVG
-                            path={hamburgerHoverImg}
-                            className={"main-menu__hamburger--hover"}
-                          />
-                        </li>
-                      )}
-                    />
-                    <Media
-                      query={{ minWidth: mediumScreen }}
-                      render={() =>
-                        items.map(item => (
-                          <li className="main-menu__item" key={item.id}>
-                            <NavDropdown overlay={overlayContext} {...item} />
-                          </li>
-                        ))
-                      }
-                    />
-                  </ul>
-                );
-              }}
-            </TypedMainMenuQuery>
             <ul>
+              <TypedMainMenuQuery renderOnError displayLoader={false}>
+                {({ data }) => {
+                  const items = maybe(() => data.shop.navigation.main.items, []);
+
+                  return (
+                    <>
+                      <Media
+                        query={{ maxWidth: mediumScreen }}
+                        render={() => (
+                          <li
+                            className="main-menu__hamburger"
+                            onClick={() =>
+                              overlayContext.show(
+                                OverlayType.sideNav,
+                                OverlayTheme.left,
+                                { data: items }
+                              )
+                            }
+                          >
+                            <ReactSVG
+                              path={hamburgerImg}
+                              className={"main-menu__hamburger--icon"}
+                            />
+                            <ReactSVG
+                              path={hamburgerHoverImg}
+                              className={"main-menu__hamburger--hover"}
+                            />
+                          </li>
+                        )}
+                      />
+                      <Media
+                        query={{ minWidth: mediumScreen }}
+                        render={() =>
+                          items.map(item => (
+                            <li className="main-menu__item" key={item.id}>
+                              <NavDropdown overlay={overlayContext} {...item} />
+                            </li>
+                          ))
+                        }
+                      />
+                    </>
+                  );
+                }}
+              </TypedMainMenuQuery>
+              <Media
+                query={{ minWidth: mediumScreen }}
+                render={() =>
+                  staticPages.map(item => (
+                    <li className="main-menu__item" key={item.id}>
+                      <NavDropdown overlay={overlayContext} {...item} />
+                    </li>
+                  ))
+                }
+              />
               <Online>
                 <Media
                   query={{ minWidth: smallScreen }}
@@ -145,19 +191,19 @@ const MainMenu: React.FC = () => {
                           }
                         />
                       ) : (
-                        <li
-                          data-testid="login-btn"
-                          className="main-menu__icon"
-                          onClick={() =>
-                            overlayContext.show(
-                              OverlayType.login,
-                              OverlayTheme.right
-                            )
-                          }
-                        >
-                          <ReactSVG path={userImg} />
-                        </li>
-                      )}
+                          <li
+                            data-testid="login-btn"
+                            className="main-menu__icon"
+                            onClick={() =>
+                              overlayContext.show(
+                                OverlayType.login,
+                                OverlayTheme.right
+                              )
+                            }
+                          >
+                            <ReactSVG path={userImg} />
+                          </li>
+                        )}
                     </>
                   )}
                 />
